@@ -5,7 +5,8 @@
 class Polynomial
 {
     private:
-        std::vector<double> coeffs;
+        std::vector<double> _coeffs;
+        void                parse_coeff(std::stringstream &ss_str, double sign);
 
     public:
         Polynomial();
@@ -14,6 +15,9 @@ class Polynomial
         Polynomial(const Polynomial &other);
         Polynomial& operator=(const Polynomial &other);
 
-        int degree();
+        const std::vector<double> &get_coeffs() const;
+        int     degree() const;
         double  solve_quad(std::vector<double> &roots); //returns delta and changes roots.
 };
+
+std::ostream& operator<<(std::ostream &os, const Polynomial &pol);

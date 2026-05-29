@@ -1,22 +1,24 @@
 NAME = computor
-SOURCES = mandatory/main.cpp
-BSOURCES = 
-OBJECTS = $(SOURCES:.c=.o)
-BOBJECTS = $(BSOURCES:.c=.o)
+SOURCES = mandatory/main.cpp mandatory/polynomial.cpp
+BSOURCES =
+OBJECTS = $(SOURCES:.cpp=.o)
+BOBJECTS = $(BSOURCES:.cpp=.o)
+INCLUDES = mandatory
+BINCLUDES = bonus
 
 CC = g++
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $?
+	$(CC) $(CFLAGS) -o $(NAME) $? -I $(INCLUDES)
 
 bonus: $(OBJECTS) $(BOBJECTS)
 	$(AR) -r $(NAME) $?
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
+%.o: %.cpp
+	$(CC) -c $(CFLAGS) $? -o $@ -I $(INCLUDES)
 
 clean:
 	rm -f $(OBJECTS) $(BOBJECTS)

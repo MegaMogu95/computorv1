@@ -1,7 +1,6 @@
 #include <string>
 #include <iostream>
-
-int 
+#include "polynomial.hpp"
 
 int main(int argc, char **argv)
 {
@@ -16,5 +15,6 @@ int main(int argc, char **argv)
         equation = argv[1];
     else
         std::getline(std::cin, equation);
-    std::cout << "L'equation c'est " << equation << std::endl;
+    Polynomial  pol(equation);
+    std::cout << pol << " = 0\n";
 }
