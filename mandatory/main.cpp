@@ -36,10 +36,25 @@ int main(int argc, char **argv)
         }
         else if (deg == 2)
         {
-            std::cout << "Trying to calculate root of complex numbers:\n";
-            Complex z(0, 0);
-            std::cin >> z.re >> z.im;
-            std::cout << "sqrt(" << z << ") = " << z.sqrt() << std::endl;
+            std::pair<Complex, Complex> roots;
+            double  delta = pol.solve_quad(roots);
+            if (delta > 0)
+            {
+                std::cout << "Discriminant is strictly positive, the two solutions are:\n";
+                std::cout << roots.first << '\n';
+                std::cout << roots.second << '\n';
+            }
+            else if (delta == 0)
+            {
+                std::cout << "Discriminant is null, the solution is:\n";
+                std::cout << roots.first << '\n';
+            }
+            else
+            {
+                std::cout << "Discriminant is strictly negative, the two complex solutions are:\n";
+                std::cout << roots.first << '\n';
+                std::cout << roots.second << '\n';
+            }
         }
         else
             std::cout << "The polynomial degree is strictly greater than 2, I can't solve.\n";

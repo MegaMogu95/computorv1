@@ -1,5 +1,11 @@
 #include "complex.hpp"
 
+Complex::Complex():
+    re(0),
+    im(0)
+{
+}
+
 Complex::Complex(double _re, double _im):
     re(_re),
     im(_im)

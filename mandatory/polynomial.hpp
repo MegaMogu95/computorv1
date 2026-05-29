@@ -14,7 +14,7 @@ struct Polynomial
     Polynomial& operator=(const Polynomial &other);
 
     int     degree() const;
-    double  solve_quad(std::vector<Complex> &roots);
+    double  solve_quad(std::pair<Complex, Complex> &roots);
     private:
         void                parse_coeff(std::stringstream &ss_str, double sign);
 };

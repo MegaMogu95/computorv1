@@ -7,6 +7,7 @@ struct Complex
     double  re;
     double  im;
 
+    Complex();
     Complex(double _re, double _im);
     double      modulus();
     Complex     sqrt();

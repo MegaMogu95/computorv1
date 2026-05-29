@@ -101,16 +101,25 @@ std::ostream& operator<<(std::ostream &os, const Polynomial &pol)
     return (os);
 }
 
-// double  solve_quad(std::pair<Complex> &roots)
-// {
-//     double  delta;
-//     double  a = coeffs[2];
-//     double  b = coeffs[1];
-//     double  c = coeffs[0];
+double  Polynomial::solve_quad(std::pair<Complex, Complex> &roots)
+{
+    double  delta;
+    double  a = coeffs[2];
+    double  b = coeffs[1];
+    double  c = coeffs[0];
 
-//     delta = b * b - 4 * a * c;
-//     if (delta > 0)
-//     {
-
-//     }
-// }
+    delta = b * b - 4 * a * c;
+    roots.first.re = -b / (2 * a);
+    roots.second.re = -b / (2 * a);
+    if (delta >= 0)
+    {
+        roots.first.re += std::sqrt(delta) / (2 * a);
+        roots.second.re -= std::sqrt(delta) / (2 * a);
+    }
+    else
+    {
+        roots.first.im += std::sqrt(-delta) / (2 * a);
+        roots.second.im -= std::sqrt(-delta) / (2 * a);
+    }
+    return (delta);
+}
