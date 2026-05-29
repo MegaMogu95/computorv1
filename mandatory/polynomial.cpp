@@ -1,9 +1,10 @@
 #include <polynomial.hpp>
+#include <sstream>
 
 class Polynomial
 {
     private:
-        std::vector<double> coeff;
+        std::vector<double> coeffs;
 
     public:
         Polynomial();
@@ -20,7 +21,29 @@ Polynomial::Polynomial()
 {
 }
 
-Polynomial(const std::string &str)
+int Polynomial::degree()
 {
-    ss
+    bool    non_zero = false;
+    int     degree;
+
+    for (int i = 0; i <= coeffs)
+}
+
+Polynomial::Polynomial(const std::string &str)
+{
+    std::stringstream   ss_str(str);
+    double              coeff;
+    char                operator;
+    std::string         monomial;
+    int                 power;
+
+    while (ss_str >> coeff)
+    {
+        ss_str >> operator;
+        ss_str >> monomial;
+        std::stringstream   ss_power(monomial);
+        ss_power.ignore(2);
+        ss_power >> power;
+
+    }
 }

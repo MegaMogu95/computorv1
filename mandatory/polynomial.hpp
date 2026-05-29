@@ -5,7 +5,7 @@
 class Polynomial
 {
     private:
-        std::vector<double> coeff;
+        std::vector<double> coeffs;
 
     public:
         Polynomial();
