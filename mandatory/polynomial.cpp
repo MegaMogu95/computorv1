@@ -10,9 +10,9 @@ int Polynomial::degree() const
     bool    non_zero = false;
     int     degree;
 
-    for (std::vector<double>::size_type i = 0; i < _coeffs.size(); i++)
+    for (std::vector<double>::size_type i = 0; i < coeffs.size(); i++)
     {
-        if (_coeffs[i] != 0)
+        if (coeffs[i] != 0)
         {
             non_zero = true;
             degree = i;
@@ -38,8 +38,8 @@ void    Polynomial::parse_coeff(std::stringstream &ss_str, double sign)
         ss_str.ignore(2);
         ss_str >> power;
         if (power > degree())
-            _coeffs.resize(power + 1);
-        _coeffs[power] += sign * coeff;
+            coeffs.resize(power + 1);
+        coeffs[power] += sign * coeff;
     }
 }
 
@@ -69,24 +69,18 @@ Polynomial::~Polynomial()
 }
 
 Polynomial::Polynomial(const Polynomial &other):
-    _coeffs(other._coeffs)
+    coeffs(other.coeffs)
 {
 }
 
 Polynomial& Polynomial::operator=(const Polynomial &other)
 {
-    _coeffs = other._coeffs;
+    coeffs = other.coeffs;
     return (*this);
-}
-
-const std::vector<double> &Polynomial::get_coeffs() const
-{
-    return (_coeffs);
 }
 
 std::ostream& operator<<(std::ostream &os, const Polynomial &pol)
 {
-    std::vector<double> coeffs = pol.get_coeffs();
     int deg = pol.degree();
     if (deg == -1)
     {
@@ -96,13 +90,27 @@ std::ostream& operator<<(std::ostream &os, const Polynomial &pol)
     for (int i = 0; i <= deg; i++)
     {
         if (i == 0)
-            os << coeffs[i] << " * X^" << i;
-        else if (coeffs[i] >= 0)
-            os << "+ " << coeffs[i] << " * X^" << i;
-        else if (coeffs[i] < 0)
-            os << "- " << -coeffs[i] << " * X^" << i;
+            os << pol.coeffs[i] << " * X^" << i;
+        else if (pol.coeffs[i] >= 0)
+            os << "+ " << pol.coeffs[i] << " * X^" << i;
+        else if (pol.coeffs[i] < 0)
+            os << "- " << -pol.coeffs[i] << " * X^" << i;
         if (i != deg)
             os << " ";
     }
     return (os);
 }
+
+// double  solve_quad(std::pair<Complex> &roots)
+// {
+//     double  delta;
+//     double  a = coeffs[2];
+//     double  b = coeffs[1];
+//     double  c = coeffs[0];
+
+//     delta = b * b - 4 * a * c;
+//     if (delta > 0)
+//     {
+
+//     }
+// }

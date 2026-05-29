@@ -1,5 +1,5 @@
 NAME = computor
-SOURCES = mandatory/main.cpp mandatory/polynomial.cpp
+SOURCES = mandatory/main.cpp mandatory/polynomial.cpp mandatory/complex.cpp
 BSOURCES =
 OBJECTS = $(SOURCES:.cpp=.o)
 BOBJECTS = $(BSOURCES:.cpp=.o)

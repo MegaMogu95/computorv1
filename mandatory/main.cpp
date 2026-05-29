@@ -15,6 +15,33 @@ int main(int argc, char **argv)
         equation = argv[1];
     else
         std::getline(std::cin, equation);
+
     Polynomial  pol(equation);
-    std::cout << pol << " = 0\n";
+
+    std::cout << "Reduced form: " << pol << " = 0\n";
+
+    int deg = pol.degree();
+
+    if (deg == -1)
+        std::cout << "Any real number is a solution.\n";
+    else if (deg == 0)
+        std::cout << "No solution.\n";
+    else
+    {
+        std::cout << "Polynomial degree: " << deg << '\n';
+        if (deg == 1)
+        {
+            std::cout << "The solution is:\n";
+            std::cout << -pol.coeffs[0] / pol.coeffs[1] << '\n';
+        }
+        else if (deg == 2)
+        {
+            std::cout << "Trying to calculate root of complex numbers:\n";
+            Complex z(0, 0);
+            std::cin >> z.re >> z.im;
+            std::cout << "sqrt(" << z << ") = " << z.sqrt() << std::endl;
+        }
+        else
+            std::cout << "The polynomial degree is strictly greater than 2, I can't solve.\n";
+    }
 }
