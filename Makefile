@@ -12,13 +12,13 @@ CFLAGS = -Wall -Wextra -Werror -g
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $(NAME) $? -I $(INCLUDES)
+	$(CC) $(CFLAGS) -o $(NAME) $^ -I $(INCLUDES)
 
 bonus: $(OBJECTS) $(BOBJECTS)
-	$(AR) -r $(NAME) $?
+	$(CC) $(CFLAGS) -o $(NAME) $^ -I $(INCLUDES)
 
 %.o: %.cpp
-	$(CC) -c $(CFLAGS) $? -o $@ -I $(INCLUDES)
+	$(CC) -c $(CFLAGS) $< -o $@ -I $(INCLUDES)
 
 clean:
 	rm -f $(OBJECTS) $(BOBJECTS)
